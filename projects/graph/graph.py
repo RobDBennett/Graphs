@@ -69,7 +69,7 @@ class Graph:
                     q.push(neighbor)  # Add each neighbor to the stack.
 
     # Add some items that need to be passed in.
-    def dft_recursive(self, starting_vertex, visited= set()):
+    def dft_recursive(self, starting_vertex, visited=None):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
@@ -77,6 +77,9 @@ class Graph:
         This should be done using recursion.
         First time this is run, will automatically generate empty Stack and set.
         """
+        if visited == None:
+            visited = set()
+
         if starting_vertex not in visited:  # Checks if this item is in the visited set.
             print(starting_vertex)  # Print to pass test.
             visited.add(starting_vertex)  # Adds item to set.
@@ -98,14 +101,14 @@ class Graph:
         while path.size() > 0:  # Continues until path dries up.
             # Remove head of the path and cast to variable. This is a list.
             new_path = path.dequeue()
-            edge = new_path[-1]  # Check last item in the variable (list)
-            if edge not in visited:  # If last item isn't in visited
-                if edge is destination_vertex:  # Checks if that last item is the destination.
+            new_vertex = new_path[-1]  # Check last item in the variable (list)
+            if new_vertex not in visited:  # If last item isn't in visited
+                if new_vertex is destination_vertex:  # Checks if that last item is the destination.
                     return new_path  # Return the dequeue list.
                 # Otherwise add that item to the visited set.
-                visited.add(edge)
+                visited.add(new_vertex)
                 # For all of the neighbors from this last point=
-                for neighbor in self.get_neighbors(edge):
+                for neighbor in self.get_neighbors(new_vertex):
                     # If you do not copy the original path, it errors.
                     #Another way would be path = new_path + neighbor
                     path_copy = new_path.copy()
