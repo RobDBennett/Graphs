@@ -1,9 +1,7 @@
 
 def earliest_ancestor(ancestors, starting_node):
     parent_child = {}  # Create a dictionary. This will act as the graph.
-    for rel in ancestors:  # Run through each ancestor pairing
-        parent = rel[0]  # The first value is always the parent
-        child = rel[1]  # The second value is always the child.
+    for parent, child in ancestors:  # Run through each ancestor pairing
         if child not in parent_child:  # Check if the child exists in dict.
             # If not, set an empty set for parents.
             parent_child[child] = set()
@@ -15,7 +13,7 @@ def earliest_ancestor(ancestors, starting_node):
     stack = []  # Start an empty stack.
     stack.append(starting_node)  # Add starting node to stack.
     # As in previous examples, while something is in the stack...
-    while len(stack) > 0:
+    while stack:
         current = stack.pop()  # Take first element of stack as current node.
         if current in parent_child:  # Checks that the seach object is in dict.
             # Cycle through each parent of current node.
