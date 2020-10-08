@@ -58,6 +58,7 @@ class SocialGraph:
         for i in range(0, math.floor(num_users * avg_friendships / 2)):
             friendship = possible_friendships[i]
             self.add_friendship(friendship[0], friendship[1])
+            #self.add_friendship(*friendship)
 
     def get_all_social_paths(self, user_id):
         """
@@ -89,6 +90,8 @@ class SocialGraph:
                         # Add that path to the queue
                         queue.append(new_path)  
         return visited  # When the queue is exhausted, return the dictionary.
+
+    
 
 
 if __name__ == '__main__':

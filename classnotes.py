@@ -152,7 +152,7 @@ print(bfs('smash', 'kills'))
 
 import string
 
-def get_neighbors(word):
+def get_neighbors_v2(word):
     neighbors = []
     letters = list(string.ascii_letters)
     word_letters = list(word)
@@ -164,3 +164,4 @@ def get_neighbors(word):
             if candidate_word != word and candidate_word in words:
                 neighbors.append(candidate_word)
     return neighbors
+
