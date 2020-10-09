@@ -25,6 +25,16 @@ class SocialGraph:
             self.friendships[user_id].add(friend_id)
             self.friendships[friend_id].add(user_id)
 
+        """
+        if user_id == friend_id:
+            return False
+        elif friend_id in self.friendships[user_id] or user_id in self.friendships[friend_id]:
+            return False
+        self.friendships[user_id].add(friend_id)
+        self.friendship[friend_id].add(user_id)
+        return True
+        """
+
     def add_user(self, name):
         """
         Create a new user with a sequential integer ID
@@ -59,6 +69,21 @@ class SocialGraph:
             friendship = possible_friendships[i]
             self.add_friendship(friendship[0], friendship[1])
             #self.add_friendship(*friendship)
+
+        """
+        for i in range(num_users):
+            self.add_user(f"User {i+1})
+        target_friendships = num_users * avg_friendships
+        total_friendships = 0
+        while total_friendships < target_friendships:
+            user_id = random.randint(1,self.last_id)
+            friend_id = random.randint(1, self.last_id)
+        
+            if self.add_friendship(user_id, friend_id): 
+                total_friendships += 2
+                
+
+        """
 
     def get_all_social_paths(self, user_id):
         """
