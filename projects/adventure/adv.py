@@ -142,7 +142,7 @@ use_the_player()
 # This visits every room in 998 moves (again), uses the player traversal and generates the graph.
 
 #Uncomment to see the generated graph.
-print(graph)
+#print(graph)
 
 # TRAVERSAL TEST
 visited_rooms = set()
